@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model TaskEntry
+
+<!--Heading-->
+<h2>Edit Your Task</h2>
+
+
+<!--Create a form for user to put new record-->
+<form method="post">
+    <!--MovieId is hidden becasue we don't want uset to edit it-->
+    <input type="hidden" asp-for="TaskId" />
+    <br />
+
+    <label asp-for="Task">Task:</label>
+    <br />
+    <input asp-for="Task" />
+    <br />
+    <br />
+
+    <label asp-for="DueDate">Due Date:</label>
+    <br />
+
+    <input asp-for="DueDate" type="date" />
+    <br />
+    <br />
+
+    <label asp-for="Quadrant">Quadrant: </label>
+    <br />
+    <select asp-for="Quadrant">
+        <!--There is four options they can select-->
+        <option value="">Select a Quadrant</option>
+        <option value="Quadrant I">Important / Urgent</option>
+        <option value="Quadrant II">Inportant / Not Urgent</option>
+        <option value="Quadrant III">Not Important / Urgent</option>
+        <option value="Quadrant IV">Not Important / Not Urgent</option>
+    </select>
+    <br />
+    <br />
+
+    <label asp-for="Category">Category: </label>
+    <br />
+    <select asp-for="Category">
+        <!--There is four options they can select-->
+        <option value="">Select a Category</option>
+        <option value="Home">Home</option>
+        <option value="School">School</option>
+        <option value="Work">Work</option>
+        <option value="Church">Church</option>
+    </select>
+    <br />
+    <br />
+
+    <!--This is a radio button that user can choose yes or no-->
+    <label asp-for="Completed">Completed</label>
+    <br />
+    <input type="radio" asp-for="Completed" value="true" />Yes
+    <input type="radio" asp-for="Completed" value="false" />No
+
+    <br />
+    <br />
+
+    <!--Create a button to submit the record to database-->
+    <button type="submit">Submit</button>
+
+    <!--This is for validation for user input. If it doesn't meet requirements, show error message-->
+    <div asp-validation-summary="All"></div>
+</form>
