@@ -7,12 +7,14 @@
 @model TaskEntry
 
 <h2>Confirm Deletion</h2>
-<h3>@Model.Task</h3>
+<br />
+
+<h5>Do you really want to delete @Model.Task?</h5>
 
 <form method="post">
 
     <input type="hidden" asp-for="TaskId" />
 
-    <button type="submit">Delete</button>
-    <a class="btn btn-danger" asp-controller="Home" asp-action="Quadrant"></a>
+    <button class="btn btn-danger" type="submit">Delete</button>
+    <a class="btn btn-info" asp-controller="Home" asp-action="Quadrant">Cancel</a>
 </form>
