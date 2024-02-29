@@ -53,5 +53,27 @@ namespace Mission08_Team0307.Controllers
 
             return View(tasks);
         }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var taskToEdit = _repo.Tasks
+                .Single(x => x.TaskId == id);
+
+            return View("TaskForm", taskToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Update(TaskEntry updatedTask)
+        {
+            _repo.UpdateTask(updatedTask);
+
+            return RedirectToAction("Quadrant");
+        }
+
+        public IActionResult Delete()
+        {
+            return View();
+        }
     }
 }

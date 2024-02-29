@@ -11,22 +11,55 @@
         <th>Quadrant 2</th>
     </tr>
 
-    @foreach (var incompleteTask in Model)
-    {
-        <tr>
+    <tr>
+        @foreach (var incompleteTask in Model)
+        {
             <td>
-                <p>@incompleteTask.Task</p>
+                @if (incompleteTask.Quadrant == "Quadrant I")
+                {
+                    <p>@incompleteTask.Task</p>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete">Delete</a>
+                }
             </td>
-            <td>Content Q2</td>
-        </tr>
-        <tr>
-            <th>Quadrant 3</th>
-            <th>Quadrant 4</th>
-        </tr>
-        <tr>
-            <td>Content Q3</td>
-            <td>Content Q4</td>
-        </tr>
-    }
+        }
+
+        @foreach (var incompleteTask in Model)
+        {
+            <td>
+                @if (incompleteTask.Quadrant == "Quadrant II")
+                {
+                    <p>@incompleteTask.Task</p>
+                }
+            </td>
+        }
+    </tr>
+
+    <tr>
+        <th>Quadrant 3</th>
+        <th>Quadrant 4</th>
+    </tr>
+    <tr>
+        @foreach (var incompleteTask in Model)
+        {
+            <td>
+                @if (incompleteTask.Quadrant == "Quadrant III")
+                {
+                    <p>@incompleteTask.Task</p>
+                }
+            </td>
+        }
+
+        @foreach (var incompleteTask in Model)
+        {
+            <td>
+                @if (incompleteTask.Quadrant == "Quadrant IV")
+                {
+                    <p>@incompleteTask.Task</p>
+                }
+            </td>
+        }
+            
+    </tr>
 
 </table>

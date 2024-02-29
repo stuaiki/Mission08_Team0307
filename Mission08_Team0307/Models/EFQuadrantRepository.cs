@@ -15,5 +15,11 @@
             _context.Add(task);
             _context.SaveChanges();
         }
+
+        public void UpdateTask(TaskEntry task)
+        {
+            _context.Update(task);
+            _context.SaveChanges();
+        }
     }
 }
