@@ -6,11 +6,11 @@ namespace Mission08_Team0307.Controllers
 {
     public class HomeController : Controller
     {
-        private QuadrantContext _context;
+        private IQuadrantRepository _repo;
 
-        public HomeController(QuadrantContext temp)
+        public HomeController(IQuadrantRepository temp)
         {
-            _context = temp;
+            _repo = temp;
         }
 
         //return index view
@@ -34,8 +34,7 @@ namespace Mission08_Team0307.Controllers
             if (ModelState.IsValid)
             {
                 //add new task and save changes
-                _context.Tasks.Add(response);
-                _context.SaveChanges();
+                _repo.AddTask(response);
 
                 //jump to confirmaiton view and bring values inside response
                 return View("Confirmation", response);
