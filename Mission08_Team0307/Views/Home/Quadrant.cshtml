@@ -3,3 +3,30 @@
 *@
 @{
 }
+@model List<TaskEntry>
+
+<table>
+    <tr>
+        <th>Quadrant 1</th>
+        <th>Quadrant 2</th>
+    </tr>
+
+    @foreach (var incompleteTask in Model)
+    {
+        <tr>
+            <td>
+                <p>@incompleteTask.Task</p>
+            </td>
+            <td>Content Q2</td>
+        </tr>
+        <tr>
+            <th>Quadrant 3</th>
+            <th>Quadrant 4</th>
+        </tr>
+        <tr>
+            <td>Content Q3</td>
+            <td>Content Q4</td>
+        </tr>
+    }
+
+</table>

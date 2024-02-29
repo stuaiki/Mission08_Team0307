@@ -48,7 +48,10 @@ namespace Mission08_Team0307.Controllers
 
         public IActionResult Quadrant()
         {
-            return View();
+            var tasks = _repo.Tasks
+                .Where(x => x.Completed == false).ToList();
+
+            return View(tasks);
         }
     }
 }
