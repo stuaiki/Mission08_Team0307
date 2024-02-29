@@ -6,11 +6,11 @@ namespace Mission08_Team0307.Controllers
 {
     public class HomeController : Controller
     {
-        private QuadrantContext _context;
+        private IQuadrantRepository _repo;
 
-        public HomeController(QuadrantContext temp)
+        public HomeController(IQuadrantRepository temp)
         {
-            _context = temp;
+            _repo = temp;
         }
 
         //return index view
@@ -34,8 +34,7 @@ namespace Mission08_Team0307.Controllers
             if (ModelState.IsValid)
             {
                 //add new task and save changes
-                _context.Tasks.Add(response);
-                _context.SaveChanges();
+                _repo.AddTask(response);
 
                 //jump to confirmaiton view and bring values inside response
                 return View("Confirmation", response);
@@ -49,7 +48,44 @@ namespace Mission08_Team0307.Controllers
 
         public IActionResult Quadrant()
         {
-            return View();
+            var tasks = _repo.Tasks
+                .Where(x => x.Completed == false).ToList();
+
+            return View(tasks);
+        }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var taskToEdit = _repo.Tasks
+                .Single(x => x.TaskId == id);
+
+            return View("TaskForm", taskToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Update(TaskEntry updatedTask)
+        {
+            _repo.UpdateTask(updatedTask);
+
+            return RedirectToAction("Quadrant");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var taskToDelete = _repo.Tasks
+                .Single(x => x.TaskId == id);
+
+            return View(taskToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(TaskEntry deleteTask)
+        {
+            _repo.DeleteTask(deleteTask);
+
+            return RedirectToAction("Quadrant");
         }
     }
 }
