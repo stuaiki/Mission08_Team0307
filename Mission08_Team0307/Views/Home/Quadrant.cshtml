@@ -5,6 +5,23 @@
 }
 @model List<TaskEntry>
 
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+
 <table>
     <tr>
         <th>Quadrant 1</th>
@@ -12,27 +29,31 @@
     </tr>
 
     <tr>
-        @foreach (var incompleteTask in Model)
-        {
-            <td>
+        <td>
+            @foreach (var incompleteTask in Model)
+            {
                 @if (incompleteTask.Quadrant == "Quadrant I")
                 {
                     <p>@incompleteTask.Task</p>
                     <a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
-                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete">Delete</a>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@incompleteTask.TaskId">Delete</a>
+                    <br />
                 }
-            </td>
-        }
+            }
+        </td>
 
-        @foreach (var incompleteTask in Model)
-        {
-            <td>
+        <td>
+            @foreach (var incompleteTask in Model)
+            {
                 @if (incompleteTask.Quadrant == "Quadrant II")
                 {
                     <p>@incompleteTask.Task</p>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@incompleteTask.TaskId">Delete</a>
+                    <br />
                 }
-            </td>
-        }
+            }
+        </td>
     </tr>
 
     <tr>
@@ -40,25 +61,32 @@
         <th>Quadrant 4</th>
     </tr>
     <tr>
-        @foreach (var incompleteTask in Model)
-        {
-            <td>
+        <td>
+            @foreach (var incompleteTask in Model)
+            {
                 @if (incompleteTask.Quadrant == "Quadrant III")
                 {
                     <p>@incompleteTask.Task</p>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@incompleteTask.TaskId">Delete</a>
+                    <br />
                 }
-            </td>
-        }
-
-        @foreach (var incompleteTask in Model)
-        {
-            <td>
+            }
+        </td>
+        
+        <td>
+            @foreach (var incompleteTask in Model)
+            {
                 @if (incompleteTask.Quadrant == "Quadrant IV")
                 {
                     <p>@incompleteTask.Task</p>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@incompleteTask.TaskId">Delete</a>
+                    <br />
                 }
-            </td>
-        }
+            }
+        </td>
+        
             
     </tr>
 

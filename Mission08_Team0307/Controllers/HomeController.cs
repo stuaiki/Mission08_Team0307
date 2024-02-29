@@ -71,9 +71,21 @@ namespace Mission08_Team0307.Controllers
             return RedirectToAction("Quadrant");
         }
 
-        public IActionResult Delete()
+        [HttpGet]
+        public IActionResult Delete(int id)
         {
-            return View();
+            var taskToDelete = _repo.Tasks
+                .Single(x => x.TaskId == id);
+
+            return View(taskToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(TaskEntry deleteTask)
+        {
+            _repo.DeleteTask(deleteTask);
+
+            return RedirectToAction("Quadrant");
         }
     }
 }

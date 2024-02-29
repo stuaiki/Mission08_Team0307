@@ -16,6 +16,12 @@
             _context.SaveChanges();
         }
 
+        public void DeleteTask(TaskEntry task)
+        {
+            _context.Tasks.Remove(task);
+            _context.SaveChanges();
+        }
+
         public void UpdateTask(TaskEntry task)
         {
             _context.Update(task);

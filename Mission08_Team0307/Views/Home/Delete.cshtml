@@ -4,4 +4,15 @@
 @{
 }
 
+@model TaskEntry
+
 <h2>Confirm Deletion</h2>
+<h3>@Model.Task</h3>
+
+<form method="post">
+
+    <input type="hidden" asp-for="TaskId" />
+
+    <button type="submit">Delete</button>
+    <a class="btn btn-danger" asp-controller="Home" asp-action="Quadrant"></a>
+</form>
