@@ -6,66 +6,95 @@
 
 @model TaskEntry
 
-<!--Heading-->
-<h2>Add/Update Your Task</h2>
-
 
 <!--Create a form for user to put new record-->
-<form method="post">
-    <!--MovieId is hidden becasue we don't want use to edit it-->
-    <input type="hidden" asp-for="TaskId" />
-    <br />
 
-    <label asp-for="Task">Task:</label>
-    <br />
-    <input asp-for="Task"/>
-    <br />
-    <br />
+<section class="pt-3 pt-md-5 pb-md-5 pt-lg-7 bg-gray-200">
+    <div class="container">
+        <div class="col-lg-8 col-md-10 mx-auto pb-5">
+            <div class="card shadow-lg">
+                <div class="card-header bg-gradient-dark p-5 position-relative">
+                    <h3 class="text-white mb-0">Add and Update Tasks</h3>
+                    <p class="text-white opacity-8 mb-4">Enter information to add to the To Do List</p>
+                    <div class="position-absolute w-100 z-index-1 bottom-0 ms-n5">
+                        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto" style="height:7vh;min-height:50px;">
+                            <defs>
+                                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+                            </defs>
+                            <g class="moving-waves">
+                                <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40"></use>
+                                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)"></use>
+                                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)"></use>
+                                <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)"></use>
+                                <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)"></use>
+                                <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,0.95"></use>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <section>
+                    <div class="card card-plain">
+                        <!--Here is the form-->
+                        <form role="form" id="contact-form" method="post" autocomplete="off">
+                            <div class="card-body pb-2">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-4">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ps-md-2">
+                                        <div class="input-group">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0 mt-md-0 mt-4">
+                                    <div>
+                                        <!--Hidden ID-->
+                                        <input type="hidden" asp-for="TaskId" />
 
-    <label asp-for="DueDate">Due Date:</label>
-    <br />
-
-    <input asp-for="DueDate" type="date" />
-    <br />
-    <br />
-
-    <label asp-for="Quadrant">Quadrant: </label>
-    <br />
-    <select asp-for="Quadrant">
-        <!--There is four options they can select-->
-        <option value="">Select a Quadrant</option>
-        <option value="Quadrant I">Important / Urgent</option>
-        <option value="Quadrant II">Important / Not Urgent</option>
-        <option value="Quadrant III">Not Important / Urgent</option>
-        <option value="Quadrant IV">Not Important / Not Urgent</option>
-    </select>
-    <br />
-    <br />
-
-    <label asp-for="Category">Category: </label>
-    <br />
-    <select asp-for="Category">
-        <!--There is four options they can select-->
-        <option value="">Select a Category</option>
-        <option value="Home">Home</option>
-        <option value="School">School</option>
-        <option value="Work">Work</option>
-        <option value="Church">Church</option>
-    </select>
-    <br />
-    <br />
-
-    <label asp-for="Completed">Completed</label>
-    <br />
-    <input type="radio" asp-for="Completed" value="true" />Yes
-    <input type="radio" asp-for="Completed" value="false" />No
-
-    <br />
-    <br />
-
-    <!--Create a button to submit the record to database-->
-    <button type="submit">Submit</button>
-
-    <!--This is for validation for user input. If it doesn't meet requirements, show error message-->
-    <div asp-validation-summary="All"></div>
-</form>
+                                        <!--Labels and Inputs-->
+                                        <label asp-for="Task" style="font-size: 13px;">Task:</label>
+                                        <input asp-for="Task" class="form-control" placeholder="Enter in a task name...">
+                                        <br>
+                                        <label asp-for="DueDate" style="font-size: 13px;">Due Date:</label>
+                                        <input asp-for="DueDate" type="date" class="form-control">
+                                        <br>
+                                        <label asp-for="Quadrant" style="font-size: 13px;">Quadrant: </label>
+                                        <select asp-for="Quadrant" class="form-control" name="choices-button" style="font-size: 13px;">
+                                            <option value="">Select a Quadrant...</option>
+                                            <option value="Quadrant I">Important / Urgent</option>
+                                            <option value="Quadrant II">Important / Not Urgent</option>
+                                            <option value="Quadrant III">Not Important / Urgent</option>
+                                            <option value="Quadrant IV">Not Important / Not Urgent</option>
+                                        </select>
+                                        <br>
+                                        <label asp-for="Category" style="font-size: 13px;">Category: </label>
+                                        <select asp-for="Category" class="form-control" name="choices-button" style="font-size: 13px;">
+                                            <option value="">Select a Category...</option>
+                                            <option value="Home">Home</option>
+                                            <option value="School">School</option>
+                                            <option value="Work">Work</option>
+                                            <option value="Church">Church</option>
+                                        </select>
+                                        <br>
+                                        <label asp-for="Completed" style="font-size: 13px">Task Completed:</label>
+                                        <br />
+                                        <input type="radio" asp-for="Completed" value="true" style="margin-left: 5px" /> Yes &nbsp;
+                                        <input type="radio" asp-for="Completed" value="false" /> No                                 
+                                    </div>
+                                    <!--Error display-->
+                                    <div class="text-primary" asp-validation-summary="All"></div>
+                                    <div class="col-md-12 text-center">
+                                        <!--Button for submission-->
+                                        <button type="submit" class="btn bg-gradient-dark mt-3 mb-0">Submit</button>
+                                        <br><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>

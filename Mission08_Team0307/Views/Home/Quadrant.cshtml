@@ -5,89 +5,97 @@
 }
 @model List<TaskEntry>
 
-<style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
+<div class="container" style="margin-top:150px; margin-bottom:100px;">
+    <div class="table-responsive">
+        <table class="table align-items-center mb-0">
+            <tr>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7" style="background-color: #dee2e6; text-align: center;">Quadrant 1</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7" style="background-color: #dee2e6; text-align: center;">Quadrant 2</th>
+            </tr>
 
-    th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: center;
-    }
+            <tr>
+                <td>
+                    <div style="height:5px;font-size:1px;">&nbsp;</div>
+                    @foreach (var incompleteTask in Model)
+                    {
+                        @if (incompleteTask.Quadrant == "Quadrant I")
+                        {
+                            <div class="d-flex px-2 py-1" style="justify-content: center">
+                                <p style="margin-top:2px;">@incompleteTask.Task</p>
+                                <p>&nbsp;</p>
+                                <a class="btn bg-gradient-info btn-sm text-xxs" style="width:50px; text-align:left; padding-left: 5px;" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
+                                <p>&nbsp;</p>
+                                <a class="btn bg-gradient-danger btn-sm text-xxs" style="width:50px; text-align:left; padding-left: 8px;" asp-controller="Home" asp-action="Delete" asp-route-id="@incompleteTask.TaskId">Delete</a>
+                                <br />
+                            </div>
+                        }
+                    }
+                </td>
 
-    th {
-        background-color: #f2f2f2;
-    }
-</style>
+                <td>
+                    <div style="height:5px;font-size:1px;">&nbsp;</div>
+                    @foreach (var incompleteTask in Model)
+                    {
+                        @if (incompleteTask.Quadrant == "Quadrant II")
+                        {
+                            <div class="d-flex px-2 py-1" style="text-align: center;">
+                                <p style="margin-top:2px;">@incompleteTask.Task</p>
+                                <p>&nbsp;</p>
+                                <a class="btn bg-gradient-info btn-sm text-xxs" style="width:50px; text-align:left; padding-left: 5px;" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
+                                <p>&nbsp;</p>
+                                <a class="btn bg-gradient-danger btn-sm text-xxs" style="width:50px; text-align:left; padding-left: 8px;" asp-controller="Home" asp-action="Delete" asp-route-id="@incompleteTask.TaskId">Delete</a>
+                                <br />
+                            </div>
+                        }
+                    }
+                </td>
+            </tr>
 
-<table>
-    <tr>
-        <th>Quadrant 1</th>
-        <th>Quadrant 2</th>
-    </tr>
-
-    <tr>
-        <td>
-            @foreach (var incompleteTask in Model)
-            {
-                @if (incompleteTask.Quadrant == "Quadrant I")
-                {
-                    <p>@incompleteTask.Task</p>
-                    <a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
-                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@incompleteTask.TaskId">Delete</a>
-                    <br />
-                }
-            }
-        </td>
-
-        <td>
-            @foreach (var incompleteTask in Model)
-            {
-                @if (incompleteTask.Quadrant == "Quadrant II")
-                {
-                    <p>@incompleteTask.Task</p>
-                    <a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
-                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@incompleteTask.TaskId">Delete</a>
-                    <br />
-                }
-            }
-        </td>
-    </tr>
-
-    <tr>
-        <th>Quadrant 3</th>
-        <th>Quadrant 4</th>
-    </tr>
-    <tr>
-        <td>
-            @foreach (var incompleteTask in Model)
-            {
-                @if (incompleteTask.Quadrant == "Quadrant III")
-                {
-                    <p>@incompleteTask.Task</p>
-                    <a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
-                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@incompleteTask.TaskId">Delete</a>
-                    <br />
-                }
-            }
-        </td>
+            <tr>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7" style="background-color: #dee2e6; text-align: center;">Quadrant 3</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7" style="background-color: #dee2e6; text-align: center;">Quadrant 4</th>
+            </tr>
+            <tr>
+                <td>
+                    <div style="height:5px;font-size:1px;">&nbsp;</div>
+                
+                    @foreach (var incompleteTask in Model)
+                    {
+                        @if (incompleteTask.Quadrant == "Quadrant III")
+                        {
+                            <div class="d-flex px-2 py-1" style="text-align: center;">
+                                <p style="margin-top:2px;">@incompleteTask.Task</p>
+                                <p>&nbsp;</p>
+                                <a class="btn bg-gradient-info btn-sm text-xxs" style="width:50px; text-align:left; padding-left: 5px;" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
+                                <p>&nbsp;</p>
+                                <a class="btn bg-gradient-danger btn-sm text-xxs" style="width:50px; text-align:left; padding-left: 8px;" asp-controller="Home" asp-action="Delete" asp-route-id="@incompleteTask.TaskId">Delete</a>
+                                <br />
+                            </div>
+                        }
+                    }
+                </td>
         
-        <td>
-            @foreach (var incompleteTask in Model)
-            {
-                @if (incompleteTask.Quadrant == "Quadrant IV")
-                {
-                    <p>@incompleteTask.Task</p>
-                    <a class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
-                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@incompleteTask.TaskId">Delete</a>
-                    <br />
-                }
-            }
-        </td>
+                <td>
+                    <div style="height:5px;font-size:1px;">&nbsp;</div>
+                    @foreach (var incompleteTask in Model)
+                    {
+                        @if (incompleteTask.Quadrant == "Quadrant IV")
+                        {
+                            <div class="d-flex px-2 py-1" style="text-align: center;">
+                                <p style="margin-top:2px;">@incompleteTask.Task</p>
+                                <p>&nbsp;</p>
+                                <a class="btn bg-gradient-info btn-sm text-xxs" style="width:50px; text-align:left; padding-left: 5px;" asp-controller="Home" asp-action="Update" asp-route-id="@incompleteTask.TaskId">Update</a>
+                                <p>&nbsp;</p>
+                                <a class="btn bg-gradient-danger btn-sm text-xxs" style="width:50px; text-align:left; padding-left: 8px;" asp-controller="Home" asp-action="Delete" asp-route-id="@incompleteTask.TaskId">Delete</a>
+                                <br />
+                            </div>
+                        }
+                    }
+                </td>
         
             
-    </tr>
+            </tr>
 
-</table>
+        </table>
+</div>
+</div>
