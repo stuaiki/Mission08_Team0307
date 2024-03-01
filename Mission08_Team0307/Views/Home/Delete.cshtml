@@ -5,16 +5,17 @@
 }
 
 @model TaskEntry
+<div style="text-align:center; justify-content:center; margin-top:200px; margin-bottom:300px;">
+    <h2>Confirm Deletion</h2>
+    <br />
 
-<h2>Confirm Deletion</h2>
-<br />
+    <h5>Do you really want to delete @Model.Task?</h5>
 
-<h5>Do you really want to delete @Model.Task?</h5>
+    <form method="post">
 
-<form method="post">
+        <input type="hidden" asp-for="TaskId" />
 
-    <input type="hidden" asp-for="TaskId" />
-
-    <button class="btn btn-danger" type="submit">Delete</button>
-    <a class="btn btn-info" asp-controller="Home" asp-action="Quadrant">Cancel</a>
-</form>
+        <button class="btn bg-gradient-danger" type="submit">Delete</button>
+        <a class="btn bg-gradient-info" asp-controller="Home" asp-action="Quadrant">Cancel</a>
+    </form>
+</div>

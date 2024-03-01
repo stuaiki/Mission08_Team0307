@@ -4,56 +4,98 @@
 
     This is Mission 8 team assignment and create to do list for users. 
 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Mission08_Team0307</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Mission08_Team0307.styles.css" asp-append-version="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="\lib\bootstrap\dist\css\nucleo-icons.css" rel="stylesheet" />
+    <link href="\lib\bootstrap\dist\css\nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- CSS Files -->
+    <title>Joel Hilton - @ViewData["Title"]</title>
+    <link href="\lib\bootstrap\dist\css\soft-design-system-pro.css" rel="stylesheet" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Mission08_Team0307</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <!--Create navigation bars taht connect to each html view pages with HomeController-->
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="TaskForm">Submit Task</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Quadrant">Quadrant</a>
-                        </li>
-                    </ul>
-                </div>
+<header>
+    <!-- Navbar Light -->
+    <div class="container position-sticky z-index-sticky top-0">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg  blur blur-rounded top-0  z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+                    <div class="container-fluid px-0">
+                        <a asp-controller="Home" asp-action="Index" class="navbar-brand font-weight-bolder ms-sm-3" style="margin-right: 0px;" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
+                            Mission08 Project
+                        </a>
+                        <a href="https://www.linkedin.com/in/joelhilton/" class="btn btn-sm  bg-gradient-info  btn-round mb-0 ms-auto d-lg-none d-block">CONTACT ME</a>
+                        <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
+                            <ul class="navbar-nav navbar-nav-hover mx-auto">
+                                <li class="nav-item dropdown dropdown-hover mx-2">
+                                    <a asp-controller="Home" asp-action="Index" role="button" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="surveyPage">
+                                        Home
+                                    </a>
+                                <li class="nav-item dropdown dropdown-hover mx-2">
+                                    <a asp-controller="Home" asp-action="TaskForm" role="button" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="surveyPage">
+                                        Form
+                                    </a>
+                                <li class="nav-item dropdown dropdown-hover mx-2">
+                                    <a asp-controller="Home" asp-action="Quadrant" role="button" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="surveyPage">
+                                        Quadrant
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav d-lg-block d-none">
+                                <li class="nav-item">
+                                    <a href="https://www.byu.edu/" class="btn btn-sm  bg-gradient-info  btn-round mb-0 me-1">BYU Website</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Mission08_Team0307 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    </div>
+</header>
+<body>
+        @RenderBody()
 </body>
+<footer id="footer" class="footer py-4 bg-gradient-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-3 text-start my-auto">
+                <p class="mb-0 text-white text-sm">
+                    Copyright © <script>document.write(new Date().getFullYear())</script> Section 003 - Group 007
+                </p>
+            </div>
+            <div class="col-lg-5 col-md-8 ms-auto text-end">
+                <ul class="nav flex-row ms-n3 align-items-center mt-4 mt-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-white opacity-8" asp-controller="Home" asp-action="Index">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white opacity-8" asp-controller="Home" asp-action="TaskForm">
+                            Form
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white opacity-8" asp-controller="Home" asp-action="Quadrant">
+                            Quadrant
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="lib\bootstrap\dist\js\soft-design-system-pro.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </html>
