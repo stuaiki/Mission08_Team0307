@@ -4,6 +4,7 @@
 @{
 }
 
+<!--This is confirmation page for delete.-->
 @model TaskEntry
 <div style="text-align:center; justify-content:center; margin-top:200px; margin-bottom:300px;">
     <h2>Confirm Deletion</h2>
@@ -12,9 +13,10 @@
     <h5>Do you really want to delete @Model.Task?</h5>
 
     <form method="post">
-
+        <!--hidden ID-->
         <input type="hidden" asp-for="TaskId" />
 
+        <!--Show delete or cancel button-->
         <button class="btn bg-gradient-danger" type="submit">Delete</button>
         <a class="btn bg-gradient-info" asp-controller="Home" asp-action="Quadrant">Cancel</a>
     </form>

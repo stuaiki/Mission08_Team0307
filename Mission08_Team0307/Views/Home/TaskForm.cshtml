@@ -56,9 +56,12 @@
                                         <label asp-for="Task" style="font-size: 13px;">Task:</label>
                                         <input asp-for="Task" class="form-control" placeholder="Enter in a task name...">
                                         <br>
+
                                         <label asp-for="DueDate" style="font-size: 13px;">Due Date:</label>
                                         <input asp-for="DueDate" type="date" class="form-control">
                                         <br>
+
+                                        <!--Four select options for Quadrant-->
                                         <label asp-for="Quadrant" style="font-size: 13px;">Quadrant: </label>
                                         <select asp-for="Quadrant" class="form-control" style="font-size: 13px;">
                                             <option value="">Select a Quadrant...</option>
@@ -68,22 +71,32 @@
                                             <option value="Quadrant IV">Not Important / Not Urgent</option>
                                         </select>
                                         <br>
-                                        <label asp-for="Category" style="font-size: 13px;">Category: </label>
-                                        <select asp-for="Category" class="form-control" style="font-size: 13px;">
+
+                                        <label asp-for="CategoryId" style="font-size: 13px;">Category: </label>
+                                        <select asp-for="CategoryId" class="form-control" style="font-size: 13px;">
                                             <option value="">Select a Category...</option>
-                                            <option value="Home">Home</option>
-                                            <option value="School">School</option>
-                                            <option value="Work">Work</option>
-                                            <option value="Church">Church</option>
+                                            <!--Do this only when ViewBag is not empty-->
+                                            @if (ViewBag.Category != null)
+                                            {
+                                                <!--Show category name within categories table using viewbag-->
+                                                foreach (Category c in ViewBag.Category)
+                                                {
+                                                    <option value="@c.CategoryId">@c.CategoryName</option>
+                                                }
+                                            }
                                         </select>
                                         <br>
+
+                                        <!--Create yes or no radio button-->
                                         <label asp-for="Completed" style="font-size: 13px">Task Completed:</label>
                                         <br />
                                         <input type="radio" asp-for="Completed" value="true" style="margin-left: 5px" /> Yes &nbsp;
                                         <input type="radio" asp-for="Completed" value="false" /> No                                 
                                     </div>
+
                                     <!--Error display-->
                                     <div class="text-primary" asp-validation-summary="All"></div>
+
                                     <div class="col-md-12 text-center">
                                         <!--Button for submission-->
                                         <button type="submit" class="btn bg-gradient-dark mt-3 mb-0">Submit</button>

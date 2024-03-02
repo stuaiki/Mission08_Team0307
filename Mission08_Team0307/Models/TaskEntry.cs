@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 //Create new model called TaskEntry
 namespace Mission08_Team0307.Models
@@ -18,7 +19,10 @@ namespace Mission08_Team0307.Models
         [Required(ErrorMessage = "You need to select Quadrant")] // required component and show message if it's invalid value
         public string Quadrant { get; set; }
 
-        public string? Category { get; set; } //nullable value
+        [ForeignKey("CategoryId")]
+
+        public int? CategoryId { get; set; } //nullable value
+        public Category? Category { get; set; }
 
         public bool? Completed { get; set; } //nullable value
     }

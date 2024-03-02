@@ -10,6 +10,8 @@
 
         public List<TaskEntry> Tasks => _context.Tasks.ToList();
 
+        public IQueryable<Category> Categories => _context.Categories;
+
         public void AddTask(TaskEntry task) // method that can be called by _repo to add a task
         {
             _context.Add(task);
