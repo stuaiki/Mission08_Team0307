@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission08_Team0307.Models;
 using System.Diagnostics;
 
@@ -22,6 +23,10 @@ namespace Mission08_Team0307.Controllers
         [HttpGet] //default
         public IActionResult TaskForm()
         {
+            //assin the categories table value into viewbag
+            ViewBag.Category = _repo.Categories
+                .OrderBy(x => x.CategoryId)
+                .ToList();
             // return taskform and create new task entry form
             return View(new TaskEntry());
         }
@@ -59,6 +64,11 @@ namespace Mission08_Team0307.Controllers
         {
             var taskToEdit = _repo.Tasks
                 .Single(x => x.TaskId == id);
+
+            //assin the categories table value into viewbag
+            ViewBag.Category = _repo.Categories
+                .OrderBy(x => x.CategoryId)
+                .ToList();
 
             return View("TaskForm", taskToEdit);
         }

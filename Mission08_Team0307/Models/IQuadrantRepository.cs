@@ -3,6 +3,7 @@
     public interface IQuadrantRepository
     {
         List<TaskEntry> Tasks { get; }
+        IQueryable<Category> Categories { get; }
 
         public void AddTask(TaskEntry task); // to add a task
 
