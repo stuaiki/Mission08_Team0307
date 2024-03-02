@@ -4,10 +4,10 @@
     {
         List<TaskEntry> Tasks { get; }
 
-        public void AddTask(TaskEntry task);
+        public void AddTask(TaskEntry task); // to add a task
 
-        public void UpdateTask(TaskEntry task);
+        public void UpdateTask(TaskEntry task); // to update a task
 
-        public void DeleteTask(TaskEntry task);
+        public void DeleteTask(TaskEntry task); // to delete a task
     }
 }

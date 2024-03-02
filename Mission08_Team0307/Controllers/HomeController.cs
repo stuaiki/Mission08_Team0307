@@ -6,7 +6,7 @@ namespace Mission08_Team0307.Controllers
 {
     public class HomeController : Controller
     {
-        private IQuadrantRepository _repo;
+        private IQuadrantRepository _repo; // repository object
 
         public HomeController(IQuadrantRepository temp)
         {
@@ -46,7 +46,7 @@ namespace Mission08_Team0307.Controllers
             }
         }
 
-        public IActionResult Quadrant()
+        public IActionResult Quadrant() // send all incomplete tasks to the task table view
         {
             var tasks = _repo.Tasks
                 .Where(x => x.Completed == false).ToList();
@@ -55,7 +55,7 @@ namespace Mission08_Team0307.Controllers
         }
 
         [HttpGet]
-        public IActionResult Update(int id)
+        public IActionResult Update(int id) // retrieve task to edit and fill task view with the current information
         {
             var taskToEdit = _repo.Tasks
                 .Single(x => x.TaskId == id);
@@ -64,7 +64,7 @@ namespace Mission08_Team0307.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(TaskEntry updatedTask)
+        public IActionResult Update(TaskEntry updatedTask) // update task info and redirect to table with incomplete tasks
         {
             _repo.UpdateTask(updatedTask);
 
@@ -72,7 +72,7 @@ namespace Mission08_Team0307.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id) //retrieve task to delete and send to view with delete confirmation
         {
             var taskToDelete = _repo.Tasks
                 .Single(x => x.TaskId == id);
@@ -81,7 +81,7 @@ namespace Mission08_Team0307.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(TaskEntry deleteTask)
+        public IActionResult Delete(TaskEntry deleteTask) // delete task from database and send user back to the table view
         {
             _repo.DeleteTask(deleteTask);
 
